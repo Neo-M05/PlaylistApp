@@ -52,18 +52,16 @@ class DetailedView : AppCompatActivity() {
                 val parts = itemString.split(",").map { it.trim() }
                 if (parts.size == 4) {
                     try {
-                        val name = parts[0]
-                        val category = parts[1]
-                        val quantity = parts[2].toInt()
+                        val Songname = parts[0]
+                        val Artistname = parts[1]
+                        val Rating = parts[2].toInt()
                         val comments = parts[3]
 
                         // Add the new item to the *internal persistent lists* here.
-                        // This ensures that when the user later views the full list
-                        // (e.g., by returning from MainActivity, or if this ScreenTwo
-                        // is re-opened without new items), these new items are included.
-                        itemSongName.add(name)
-                        itemArtistName.add(category)
-                        itemRating.add(quantity)
+                      
+                        itemSongName.add(Songname)
+                        itemArtistName.add(Artistname)
+                        itemRating.add(Rating)
                         itemComments.add(comments)
 
                         successfullyAddedItemsForDisplay.add(itemString)
