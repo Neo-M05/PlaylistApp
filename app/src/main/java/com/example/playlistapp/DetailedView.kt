@@ -113,7 +113,7 @@ class DetailedView : AppCompatActivity() {
 
             if (!foundItems) {
                 stringBuilder.clear()
-                stringBuilder.append("No items found with 2 or more quantities.")
+                stringBuilder.append("Average of rating of the playList.")
             }
 
             AlertDialog.Builder(this)
@@ -127,13 +127,10 @@ class DetailedView : AppCompatActivity() {
 
         returnButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            // Use FLAG_ACTIVITY_CLEAR_TOP and FLAG_ACTIVITY_NEW_TASK
-            // This clears all activities on top of MainActivity and brings MainActivity to the front.
-            // It also ensures that the MainActivity's `newlyAddedItemsBuffer` will be cleared
-            // if MainActivity itself is recreated due to these flags.
+
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
-            finish() // Finish Screentwo so it's removed from the back stack
+            finish() // Finish MainActivity so it's removed from the back stack
         }
     }
 
@@ -147,9 +144,9 @@ class DetailedView : AppCompatActivity() {
         displayBuilder.append("--- Your Full Packing List ---\n\n")
 
         for (i in itemSongName.indices) {
-            displayBuilder.append("Item: ${itemSongName[i]}\n")
-            displayBuilder.append("Category: ${itemArtistName[i]}\n")
-            displayBuilder.append("Quantity: ${itemRating[i]}\n")
+            displayBuilder.append("SongName: ${itemSongName[i]}\n")
+            displayBuilder.append("Artistname: ${itemArtistName[i]}\n")
+            displayBuilder.append("Rating: ${itemRating[i]}\n")
             displayBuilder.append("Comments: ${itemComments[i]}\n")
             displayBuilder.append("----------------------------------\n")
         }
@@ -169,14 +166,14 @@ class DetailedView : AppCompatActivity() {
             val parts = itemString.split(",").map { it.trim() }
             if (parts.size == 4) {
                 try {
-                    val name = parts[0]
-                    val category = parts[1]
-                    val quantity = parts[2].toInt()
+                    val Songname = parts[0]
+                    val Artistname = parts[1]
+                    val Rating = parts[2].toInt()
                     val comments = parts[3]
 
-                    displayBuilder.append("Item: $name\n")
-                    displayBuilder.append("Category: $category\n")
-                    displayBuilder.append("Quantity: $quantity\n")
+                    displayBuilder.append("Songname: $Songname\n")
+                    displayBuilder.append("Artistname: $Artistname\n")
+                    displayBuilder.append("Ratings: $Rating\n")
                     displayBuilder.append("Comments: $comments\n")
                     displayBuilder.append("----------------------------------\n")
                 } catch (e: NumberFormatException) {
