@@ -27,7 +27,7 @@ class DetailedView : AppCompatActivity() {
         listOf(5, 6, 2, 9)
     )
     private val itemComments = ArrayList<String>(
-        listOf("new gen rnb", "lets breack our legs! dance song", "Rnb mix with rap", "gosspell song")
+        listOf("new gen rnb", "lets breack our legs! dance song", "Rnb mix with rap", "gosspel song")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,14 +98,14 @@ class DetailedView : AppCompatActivity() {
 
         averageButton.setOnClickListener {
             val stringBuilder = StringBuilder()
-            stringBuilder.append("Items with 2 or More Quantities:\n\n")
+            stringBuilder.append("Rating with averages:\n\n")
 
             var foundItems = false
             for (i in itemRating.indices) {
                 if (itemRating[i] >= 1) {
                     stringBuilder.append("- ${itemSongName[i]}\n")
-                    stringBuilder.append("  Category: ${itemArtistName[i]}\n")
-                    stringBuilder.append("  Quantity: ${itemRating[i]}\n")
+                    stringBuilder.append("  Artistname: ${itemArtistName[i]}\n")
+                    stringBuilder.append("  Rating: ${itemRating[i]}\n")
                     stringBuilder.append("  Comments: ${itemComments[i]}\n\n")
                     foundItems = true
                 }
